@@ -3,10 +3,17 @@ const User = require("../models/userModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+
+function ensureAuthenticated(req, res, next) {
+    if (req.session.user) {
+      return next();
+    }
+  }
+
 const register = async (req, res) => {
   try {
     const { firstname, lastname, username, email, password, role } = req.body;
-    const user = await User.find({ email: email });
+    const user = await User.find({ username });
     if (user) {
       res.json({
         msg: "User already exists",
@@ -48,8 +55,11 @@ const login = async (req, res) => {
     expiresIn: "1h",
   });
 
+
+
   res.status(200).json({ message: "Login successful", token });
 };
+
 module.exports = {
   register,
   login,
