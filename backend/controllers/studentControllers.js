@@ -1,4 +1,4 @@
-const Student = require("../models/student");
+const Student = require("../models/studentModel");
 const Class = require("../models/classModel"); // Adjust the path as necessary
 
 // Controller function to create a new student

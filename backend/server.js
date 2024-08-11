@@ -15,6 +15,7 @@ app.use("/api/students", require("./routes/studentRoutes.js"));
 app.use("/api/teachers", require("./routes/teacherRoutes.js"));
 app.use("/api/admin", require("./routes/adminRoutes.js"));
 app.use("/api/classes", require("./routes/classRoutes.js"));
+app.use("/api/users", require("./routes/userRoutes.js"))
 
 app.listen(port, () => {
   console.log(`App is running on port ${port}`);
